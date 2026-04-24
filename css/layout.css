@@ -1,0 +1,75 @@
+@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css");
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@200..900&display=swap');
+
+/* font-family: "Noto Serif KR", serif; */
+
+:root {
+    --primary-color: #44536a;
+    --point-color: #00AAEF;
+    --text-color: #222222;
+    --line-color: #dddddd;
+    --bg-color: #f9f9f9;
+    --w-color: #ffffff;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+img {
+    width: 100%;
+    /* 가로를 부모 너비에 100% 맞춤 */
+    height: 100%;
+    /* 세로를 부모 높이에 100% 맞춤 */
+    display: block;
+    /* 하단 미세한 공백 제거 */
+    object-fit: cover;
+    /* 핵심: 비율 유지하면서 박스를 꽉 채움 (잘리는 부분 발생) */
+    vertical-align: top;
+}
+
+body {
+    font-family: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+    color: var(--text-color);
+}
+
+.blind {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+}
+
+.inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 16px;
+}
+
+.title {
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 0 16px;
+}
+
+.title h2 {
+    font-family: "Noto Serif KR", serif;
+    font-weight: 600;
+    font-size: 40px;
+}
+
+.title p {
+    margin-top: 16px;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.5;
+}

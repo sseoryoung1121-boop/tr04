@@ -1,0 +1,564 @@
+.header-wrap {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    /* 본문보다 위에 오도록 설정 */
+    background-color: #fff;
+    /* 배경색이 있어야 본문과 겹치지 않음 */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    /* (선택사항) 하단 그림자 효과 */
+}
+
+.header {
+
+    position: relative;
+    z-index: 999;
+    border-bottom: 1px solid #ddd;
+}
+
+.header .inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 85px;
+}
+
+.header .gnb>ul {
+    display: flex;
+    gap: 64px;
+}
+
+.header .gnb>ul>li {
+    position: relative;
+}
+
+.header .gnb>ul>li>a {
+    display: block;
+    line-height: 120px;
+    white-space: nowrap;
+}
+
+.header .gnb>ul>li ul {
+    position: absolute;
+    top: 120px;
+    left: 50%;
+    z-index: 9;
+    height: 0;
+    transform: translate(-50%, 0);
+    transition: 0.4s;
+    overflow: hidden;
+}
+
+.header .gnb:hover>ul>li ul {
+    height: 280px;
+}
+
+.header .gnb>ul>li ul a {
+    display: block;
+    line-height: 40px;
+    white-space: nowrap;
+    padding: 0 24px;
+    text-align: center;
+    font-size: 14px;
+}
+
+
+.header .gnb::after {
+    content: "";
+    position: absolute;
+    top: 85px;
+    left: 0;
+    right: 0;
+    height: 0;
+    background: #fff;
+    z-index: 2;
+
+    transition: 0.4s;
+}
+
+.header .gnb:hover::after {
+    height: 280px;
+}
+
+/* 메인 비주얼 공통 */
+.main_visual {
+    position: relative;
+    height: 100vh;
+    width: 100%;
+    overflow: hidden;
+}
+
+.main_visual_slide {
+    height: 100%;
+}
+
+/* 슬라이드 배경 (이미지 경로는 본인 설정에 맞게) */
+.main_visual .itm01 {
+    background: url('../images/main_visual_01.jpg') no-repeat center center / cover;
+}
+
+.main_visual .itm02 {
+    background: url('../images/main_visual_02.jpg') no-repeat center center / cover;
+}
+
+.main_visual .itm03 {
+    background: url('../images/main_visual_03.jpg') no-repeat center center / cover;
+}
+
+/* 슬로건 스타일 */
+.main_visual .slg {
+    position: absolute;
+    top: 50%;
+    left: 19%;
+    /* 왼쪽 정렬 기준 */
+    transform: translateY(-50%);
+    color: #fff;
+    z-index: 10;
+
+}
+
+.main_visual .slg strong {
+    font-size: 64px;
+    font-weight: 700;
+    line-height: 1.2;
+    display: block;
+    text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
+
+}
+
+.main_visual .slg strong span {
+    font-weight: 300;
+    /* '더 좋은' 부분만 얇게 */
+}
+
+.main_visual .slg p {
+    font-size: 18px;
+    margin-top: 20px;
+    opacity: 0.8;
+
+}
+
+/* 스크롤 다운 애니메이션 */
+.scroll_down {
+    position: absolute;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 20;
+    text-align: center;
+}
+
+.scroll_down a {
+    color: #fff;
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    text-decoration: none;
+}
+
+.scroll_down .line {
+    width: 1px;
+    height: 50px;
+    background: rgba(255, 255, 255, 0.3);
+    margin: 10px auto 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.scroll_down .line::after {
+    content: '';
+    position: absolute;
+    top: -100%;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #fff;
+    animation: scrollLine 2s infinite;
+}
+
+@keyframes scrollLine {
+    0% {
+        top: -100%;
+    }
+
+    50% {
+        top: 0;
+    }
+
+    100% {
+        top: 100%;
+    }
+}
+
+/* Lucide 아이콘 초기화 */
+.lucide {
+    width: 24px;
+    height: 24px;
+    stroke-width: 1.5;
+}
+
+/* =============================================
+   사업분야 (main_info) 섹션 최종 교정본
+   ============================================= */
+
+/* 1. 섹션 전체 레이아웃 (헤더 85px 제외) */
+.main_info {
+    position: relative;
+    width: 100%;
+    /* 수정 핵심: 헤더 높이를 정확히 뺀 화면 꽉 찬 높이 설정 */
+    height: calc(100vh - 85px);
+    min-height: 850px;
+    /* 콘텐츠가 찌그러지지 않는 최소 높이 */
+    background: #000;
+    overflow: hidden;
+}
+
+/* 고정 타이틀 (사업분야) */
+.main_info .title {
+    position: absolute;
+    top: 50px;
+    /* 상단에서 배치 */
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    color: #fff;
+    z-index: 100;
+}
+
+.main_info .title h2 {
+    font-size: 42px;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+/* 타이틀 아래 바(Bar) */
+.main_info .title h2::after {
+    content: '';
+    display: block;
+    width: 40px;
+    height: 3px;
+    background: #00a859;
+    /* 초록색 포인트 바 */
+    margin: 15px auto 0;
+}
+
+.main_info .title p {
+    font-size: 16px;
+    opacity: 0.8;
+    margin-top: 10px;
+}
+
+/* 스와이퍼 컨테이너 */
+.main_info_slide {
+    width: 100%;
+    height: 100%;
+}
+
+.main_info .itm {
+    width: 100%;
+    height: 100%;
+    /* 수정 핵심: 배경 이미지가 화면에 꽉 차게 설정 */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    align-items: center;
+    /* 수직 중앙 정렬 */
+    justify-content: center;
+    /* 수평 중앙 정렬 */
+}
+
+/* 메인 이미지와 텍스트 박스를 감싸는 내부 프레임 */
+.main_info .itm .inner_content {
+    position: relative;
+    /* 첨부 이미지를 크게 활용하기 위해 너비 확장 */
+    width: 1350px;
+    /* 970x620 이미지 높이 기준 */
+    height: 620px;
+    /* 상단 고정 타이틀과의 간격 */
+    margin-top: 120px;
+}
+
+/* 왼쪽 메인 이미지 (너비와 높이를 크게 설정) */
+.main_info .img_area {
+    position: absolute;
+    left: 0;
+    top: 0;
+    /* inner_content 너비의 약 70% 차지 */
+    width: 970px;
+    height: 620px;
+    overflow: hidden;
+    /* 그림자 강제 제거 */
+    box-shadow: none !important;
+}
+
+.main_info .img_area img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* 우측 상단 겹치는 어두운 텍스트 박스 */
+.main_info .txt_area {
+    position: absolute;
+    /* 메인 이미지 우측 끝에 붙임 */
+    right: 0;
+    /* 메인 이미지 상단 끝에 붙임 (수직 완전히 겹침) */
+    top: 0;
+    width: 500px;
+    padding: 80px 60px;
+    background: rgba(30, 30, 30, 0.95);
+    /* 어두운 배경 처리 */
+    color: #fff;
+    z-index: 10;
+    /* 그림자 강제 제거 */
+    box-shadow: none !important;
+}
+
+.main_info .txt_area strong {
+    display: block;
+    font-size: 34px;
+    font-weight: 700;
+    margin-bottom: 25px;
+}
+
+/* 텍스트 박스 내부 주황색 바 */
+.main_info .txt_area strong::after {
+    content: '';
+    display: block;
+    width: 35px;
+    height: 2px;
+    background: #ff6b00;
+    margin-top: 15px;
+}
+
+.main_info .txt_area p {
+    font-size: 18px;
+    line-height: 1.7;
+    opacity: 0.9;
+    /* 한글 줄바꿈 최적화 */
+    word-break: keep-all;
+}
+
+/* 화살표 크게 조정 */
+.main_info .arrows {
+    position: absolute;
+    top: 55%;
+    /* 이미지 수직 중앙 즈음 배치 */
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 98%;
+    max-width: 1700px;
+    display: flex;
+    justify-content: space-between;
+    z-index: 150;
+    pointer-events: none;
+}
+
+.main_info .arrows button {
+    pointer-events: auto;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: rgba(255, 255, 255, 0.3);
+    transition: 0.3s;
+}
+
+.main_info .arrows button:hover {
+    color: #fff;
+}
+
+/* 화살표 크기 대폭 확대 (100px) */
+.main_info .arrows i {
+    width: 100px;
+    height: 100px;
+    stroke-width: 1px;
+}
+
+/* CSS 스타일 */
+.info-section {
+    padding: 80px 0;
+    background-color: #f8f9fa;
+    /* 밝은 회색 배경 */
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    gap: 30px;
+    /* 카드 사이 간격 */
+}
+
+.info-card {
+    flex: 1;
+    /* 반반씩 차지 */
+    background: #fff;
+    padding: 40px;
+    border: 1px solid #e1e1e1;
+}
+
+/* 왼쪽 테두리 포인트 */
+.recruit-card {
+    border-top: 4px solid #334d6e;
+}
+
+.news-card {
+    border-top: 4px solid #7cb342;
+}
+
+.card-header .sub-title {
+    font-size: 14px;
+    color: #888;
+    letter-spacing: 2px;
+}
+
+.card-header h2 {
+    font-size: 28px;
+    margin: 10px 0 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.more-btn {
+    font-size: 12px;
+    color: #333;
+    text-decoration: underline;
+}
+
+/* 리스트 스타일 */
+.info-list li {
+    padding: 20px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.tag {
+    display: inline-block;
+    padding: 2px 8px;
+    background: #e8f5e9;
+    color: #4caf50;
+    font-size: 12px;
+    margin-bottom: 8px;
+}
+
+.info-list .title {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.date {
+    font-size: 13px;
+    color: #999;
+}
+
+/* 뉴스 카드 전용 스타일 */
+.news-image img {
+    width: 100%;
+    height: auto;
+    margin-bottom: 20px;
+}
+
+/* Footer 스타일 */
+.main-footer {
+    background-color: #000;
+    /* 검은색 배경 */
+    color: #fff;
+    padding: 40px 0;
+    font-family: 'Pretendard', sans-serif;
+
+    /* --- 하얀색 공간 추가를 위한 설정 --- */
+    border-top: 1px solid #eeeeee;
+    /* 푸터 바로 위에 아주 연한 회색/흰색 선을 그어 경계를 만듦 */
+    margin-top: 100px;
+    /* 푸터 위쪽에 60px 만큼의 하얀색 빈 공간을 만듦 */
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* 메뉴 스타일 */
+.footer-menu {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.footer-menu a {
+    color: #ccc;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.footer-menu a.bold {
+    color: #fff;
+    font-weight: bold;
+}
+
+.divider {
+    color: #444;
+    font-size: 12px;
+}
+
+.footer-hr {
+    border: 0;
+    border-top: 1px solid #333;
+    margin: 20px 0;
+}
+
+/* 하단 영역 레이아웃 */
+.footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.copyright {
+    font-size: 13px;
+    color: #888;
+}
+
+.brand {
+    color: #005eb8;
+    /* DL 브랜드 컬러 포인트 */
+    font-weight: bold;
+}
+
+/* 패밀리 사이트 선택창 */
+.family-site {
+    display: flex;
+    gap: 5px;
+}
+
+.family-site select {
+    background-color: #222;
+    color: #ccc;
+    border: 1px solid #444;
+    padding: 5px 30px 5px 10px;
+    font-size: 13px;
+    appearance: none;
+    /* 기본 화살표 숨김(필요시) */
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='white'%3e%3cpath d='M7 10l5 5 5-5z'/%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    background-size: 15px;
+}
+
+.move-btn {
+    background-color: #444;
+    color: #fff;
+    border: none;
+    padding: 5px 15px;
+    font-size: 13px;
+    cursor: pointer;
+}
+
+.move-btn:hover {
+    background-color: #555;
+}
